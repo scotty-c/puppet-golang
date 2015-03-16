@@ -28,7 +28,7 @@ To customise the install:
 class {'golang':
   base_dir  => '/usr/local/go',
   version   =>  'go1.4.1',
-  goroot    =>  '$GOPATH/bin:/usr/local/go/bin:$PATH',
+  goroot    =>  "$GOPATH/bin:/usr/local/go/bin:$PATH",
   workdir   => '/usr/local/',
   }
 ```
