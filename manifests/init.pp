@@ -9,9 +9,9 @@ $workdir  = '/usr/local/'
 ){
   
    
-package {"git":
- ensure => "present", 
- alias  => "git", 
+package {'git':
+ ensure => 'present', 
+ alias  => 'git', 
  before => Exec['make GO']
  } 
    
@@ -24,12 +24,12 @@ package { 'glibc-devel':
  before => Exec['make GO']
 }
 
-vcsrepo { "$base_dir":
- ensure => present,
+vcsrepo { "${base_dir}":
+ ensure   => present,
  provider => git,
- source => 'https://github.com/golang/go.git',
+ source   => 'https://github.com/golang/go.git',
  revision => "master",
- before => [Exec['make GO'], Exec['checkout go']]
+ before   => [Exec['make GO'], Exec['checkout go']]
  }
  
 exec { 'checkout go':
@@ -53,7 +53,7 @@ file { '/etc/profile.d/golang.sh':
  content => template('golang/golang.sh.erb'),
  owner   => root,
  group   => root,
- mode    => "a+x",
+ mode    => 'a+x',
  require => Exec['make GO']
  } 
 }

@@ -1,5 +1,5 @@
 name    'scottyc-golang'
-version '0.0.1'
+version '0.1.4'
 
 author 'scottyc'
 summary 'golang module'
