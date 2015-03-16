@@ -1,0 +1,24 @@
+{
+  "name": "scottyc-golang",
+  "version": "0.0.1",
+  "author": "scottyc",
+  "license": "Apache-2.0",
+  "summary": "A module for Google's GO language",
+  "source": "https://github.com/scotty-c/puppet-golang",
+  "project_page": "https://github.com/scotty-c/puppet-golang",
+  "issues_url": "https://github.com/scotty-c/puppet-golang",
+  "tags": ["go", "golang"],
+  "operatingsystem_support": [
+    {
+    "operatingsystem":"RedHat",
+    "operatingsystemrelease":[ "6.0", "7.0" ]
+    },
+    {
+    "operatingsystem": "Ubuntu",
+    "operatingsystemrelease": [ "12.04", "14.04" ]
+    }
+   ],
+  "dependencies": [
+    { "name": "puppetlabs/vcsrepo", "version_requirement": ">= 1.0.0" }
+  ]
+}
