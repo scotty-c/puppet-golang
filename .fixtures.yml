@@ -1,0 +1,5 @@
+fixtures:
+    symlinks:
+        golang: "#{source_dir}"
+    forge_modules:
+        vcsrepo: puppetlabs/vcsrepo 
