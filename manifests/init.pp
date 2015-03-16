@@ -18,11 +18,12 @@ package {'git':
 package { 'gcc':
  ensure => installed,
  before => Exec['make GO']
-}
+ }
+
 package { 'glibc-devel':
  ensure => installed,
  before => Exec['make GO']
-}
+ }
 
 vcsrepo { "${base_dir}":
  ensure   => present,
@@ -38,7 +39,7 @@ exec { 'checkout go':
  cwd      => '/usr/local/go/',	
  before   => Exec['make GO'],
  unless   => "cat /etc/profile.d/golang.sh | grep ${goroot}"
-}
+ }
 
 
 exec { 'make GO':
