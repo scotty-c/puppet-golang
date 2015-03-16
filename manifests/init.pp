@@ -10,19 +10,19 @@ class golang(
   
    
   package {'git':
-  ensure  => 'present', 
-  alias   => 'git', 
-  before  => Exec['make GO']
+  ensure   => 'present', 
+  alias    => 'git', 
+  before   => Exec['make GO']
   } 
    
   package { 'gcc':
-  ensure => installed,
-  before => Exec['make GO']
+  ensure   => installed,
+  before   => Exec['make GO']
   }
 
   package { 'glibc-devel':
-  ensure => installed,
-  before => Exec['make GO']
+  ensure   => installed,
+  before   => Exec['make GO']
   }
 
   vcsrepo { "${base_dir}":
@@ -50,11 +50,11 @@ class golang(
   }
 
   file { '/etc/profile.d/golang.sh':
-  ensure  => present,
-  content => template('golang/golang.sh.erb'),
-  owner   => root,
-  group   => root,
-  mode    => 'a+x',
-  require => Exec['make GO']
+  ensure   => present,
+  content  => template('golang/golang.sh.erb'),
+  owner    => root,
+  group    => root,
+  mode     => 'a+x',
+  require  => Exec['make GO']
   } 
 }
