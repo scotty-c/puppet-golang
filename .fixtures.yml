@@ -3,3 +3,4 @@ fixtures:
         golang: "#{source_dir}"
     forge_modules:
         vcsrepo: puppetlabs/vcsrepo 
+        apt: puppetlabs/apt

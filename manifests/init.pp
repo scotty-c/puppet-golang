@@ -3,12 +3,15 @@
 class golang(
 
   $base_dir = '/usr/local/go',
-  $version  = 'go1.4.1',
+  $version  = '1.4.1',
   $goroot   = '$GOPATH/bin:/usr/local/go/bin:$PATH',
   $workdir  = '/usr/local/'
 ){
   
-   
+  case $::osfamily {
+  
+ 'RedHat': { 
+
   package {'git':
   ensure   => 'present', 
   alias    => 'git', 
@@ -35,7 +38,7 @@ class golang(
  
   exec { 'checkout go':
   path     => '/usr/bin:/usr/sbin:/bin:/usr/local/bin',
-  command  => "git checkout ${version}",
+  command  => "git checkout go${version}",
   cwd      => '/usr/local/go/',	
   before   => Exec['make GO'],
   unless   => "cat /etc/profile.d/golang.sh | grep ${goroot}"
@@ -56,5 +59,19 @@ class golang(
   group    => root,
   mode     => 'a+x',
   require  => Exec['make GO']
-  } 
-}
+   } 
+  }
+  
+  'Debian': { 
+
+  apt::ppa { 'ppa:juju/golang':}
+
+  package { 'golang':
+  ensure  => 'present',
+  require => Apt::Ppa['ppa:juju/golang'],
+   } 
+  }
+
+  default: { notify {"$::osfamily is not supported by this module":} }
+  }
+ }
