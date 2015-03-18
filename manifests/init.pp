@@ -1,4 +1,4 @@
-# This class installs Google language GO
+# This class installs Google language GO.
 
 class golang(
 
