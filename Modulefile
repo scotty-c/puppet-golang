@@ -8,5 +8,5 @@ project_page 'https://github.com/scotty-c/puppet-golang'
 
 # dependency
 dependency 'puppetlabs/vcsrepo'
-dependency 'puppetlabs/apt'
+
 
