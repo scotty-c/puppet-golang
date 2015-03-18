@@ -3,17 +3,14 @@
 class golang(
 
   $base_dir = '/usr/local/go',
-  $version  = '1.4.1',
+  $version  = 'go1.4.1',
   $goroot   = '$GOPATH/bin:/usr/local/go/bin:$PATH',
   $workdir  = '/usr/local/'
 ){
   
-  case $::osfamily {
-  
- 'RedHat': { 
-
+   
   package {'git':
-  ensure   => 'present', 
+  ensure   => installed, 
   alias    => 'git', 
   before   => Exec['make GO']
   } 
@@ -23,9 +20,41 @@ class golang(
   before   => Exec['make GO']
   }
 
+  case $::osfamily {
+  
+  'RedHat': {
+  
   package { 'glibc-devel':
   ensure   => installed,
   before   => Exec['make GO']
+    }
+   }
+  
+  'Debian': { 
+  
+  package {'libc6-dev':
+  ensure   => installed,
+  before   => Exec['make GO']
+  } ->
+
+  package {'bison':
+  ensure   => installed,
+  before   => Exec['make GO']
+  } ->
+
+  package {'make':
+  ensure   => installed,
+  before   => Exec['make GO']
+  } ->
+
+  package {'build-essential':
+  ensure   => installed,
+  before   => Exec['make GO']
+   }
+  }
+  
+  default: { notify {"$::osfamily is not supported by this module":}
+   }
   }
 
   vcsrepo { "${base_dir}":
@@ -38,8 +67,8 @@ class golang(
  
   exec { 'checkout go':
   path     => '/usr/bin:/usr/sbin:/bin:/usr/local/bin',
-  command  => "git checkout go${version}",
-  cwd      => '/usr/local/go/',	
+  command  => "git checkout ${version}",
+  cwd      => '/usr/local/go/', 
   before   => Exec['make GO'],
   unless   => "cat /etc/profile.d/golang.sh | grep ${goroot}"
   }
@@ -49,6 +78,7 @@ class golang(
   path     => '/usr/bin:/usr/sbin:/bin:/usr/local/bin',
   cwd      => '/usr/local/go/src/',
   command  => 'sh -c ./all.bash',
+  require  => [Package['libc6-dev'], Package['bison'], Package['make']],
   unless   => "cat /etc/profile.d/golang.sh | grep ${goroot}"
   }
 
@@ -61,17 +91,4 @@ class golang(
   require  => Exec['make GO']
    } 
   }
-  
-  'Debian': { 
 
-  apt::ppa { 'ppa:juju/golang':}
-
-  package { 'golang':
-  ensure  => 'present',
-  require => Apt::Ppa['ppa:juju/golang'],
-   } 
-  }
-
-  default: { notify {"$::osfamily is not supported by this module":} }
-  }
- }
