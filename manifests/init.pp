@@ -1,4 +1,4 @@
-# This class installs Google language GO.
+ # This class installs Google language GO.
 
 class golang(
 
@@ -70,7 +70,7 @@ class golang(
   command  => "git checkout ${version}",
   cwd      => '/usr/local/go/', 
   before   => Exec['make GO'],
-  unless   => "cat /etc/profile.d/golang.sh | grep ${goroot}"
+  creates   => '/etc/profile.d/golang.sh'
   }
 
 
@@ -78,8 +78,7 @@ class golang(
   path     => '/usr/bin:/usr/sbin:/bin:/usr/local/bin',
   cwd      => '/usr/local/go/src/',
   command  => 'sh -c ./all.bash',
-  require  => [Package['libc6-dev'], Package['bison'], Package['make']],
-  unless   => "cat /etc/profile.d/golang.sh | grep ${goroot}"
+  creates   => '/etc/profile.d/golang.sh'
   }
 
   file { '/etc/profile.d/golang.sh':
