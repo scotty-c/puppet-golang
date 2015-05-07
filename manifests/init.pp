@@ -7,13 +7,6 @@ class golang(
   $goroot   = '$GOPATH/bin:/usr/local/go/bin:$PATH',
   $workdir  = '/usr/local/'
 ){
-  
-   
-  package {'git':
-  ensure   => installed, 
-  alias    => 'git', 
-  before   => Exec['make GO']
-  } 
    
   package { 'gcc':
   ensure   => installed,
