@@ -7,7 +7,7 @@ class golang(
   $goroot   = '$GOPATH/bin:/usr/local/go/bin:$PATH',
   $workdir  = '/usr/local/'
 ){
-    
+  
   package { 'gcc':
   ensure => installed,
   before => Exec['make GO']
@@ -71,7 +71,8 @@ class golang(
   path    => '/usr/bin:/usr/sbin:/bin:/usr/local/bin',
   cwd     => '/usr/local/go/src/',
   command => 'sh -c ./all.bash',
-  creates => '/etc/profile.d/golang.sh'
+  creates => '/etc/profile.d/golang.sh',
+  timeout =>  600
   }
 
   file { '/etc/profile.d/golang.sh':
