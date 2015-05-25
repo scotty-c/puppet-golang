@@ -1,6 +1,6 @@
 {
   "name": "scottyc-golang",
-  "version": "0.2.2",
+  "version": "1.0.0",
   "author": "scottyc",
   "license": "Apache-2.0",
   "summary": "A module for Google's GO language",
@@ -19,6 +19,7 @@
     }
    ],
   "dependencies": [
-    { "name": "puppetlabs/vcsrepo", "version_requirement": ">= 1.2.0" }
+    { "name": "puppetlabs/vcsrepo", "version_requirement": ">= 1.2.0" },
+    { "name": "puppetlabs/stdlib", "version_requirement": ">= 4.1.0" }
   ]
 }
