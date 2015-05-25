@@ -20,7 +20,6 @@ if $manage_dependencies {
     }
 
 else {
-    notify {'Not Applying': }
     class {'golang::install':}
     }
   }
