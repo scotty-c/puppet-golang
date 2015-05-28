@@ -1,4 +1,7 @@
-#
+# This controls the package dependdencies that Golang needs.
+# This is controlled by the
+# $manage_dependencies param being set to true or false 
+
 class golang::packages {
   
   package { 'gcc':

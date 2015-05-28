@@ -10,7 +10,9 @@ class golang (
     
 ) inherits golang::params {
 
-validate_re($::osfamily, '^(Debian|RedHat)$', 'This module only works on Debian and Red Hat based systems.')
+validate_re($::osfamily,
+  '^(Debian|RedHat)$',
+  'This module only works on Debian and Red Hat based systems.')
 validate_bool($manage_dependencies)
 
 if $manage_dependencies {

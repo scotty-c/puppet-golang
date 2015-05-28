@@ -1,4 +1,4 @@
-#
+# This is the params class
 class golang::params {
   
   $manage_dependencies = true

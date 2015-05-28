@@ -1,3 +1,4 @@
+# This manifest builds Golang
 class golang::install {
 
   vcsrepo { $golang::base_dir:
@@ -22,6 +23,7 @@ class golang::install {
   cwd     => '/usr/local/go/src/',
   command => 'sh -c ./all.bash',
   creates => '/etc/profile.d/golang.sh',
+  tries   => 3,
   timeout =>  600
   }
 
@@ -32,5 +34,5 @@ class golang::install {
   group   => root,
   mode    => 'a+x',
   require => Exec['make GO']
-  }	
+  }
 }
