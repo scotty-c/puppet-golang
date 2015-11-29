@@ -23,15 +23,32 @@ For basic usage:
 ```
 include golang
 ```
-To customise the install:
-```
+To customise the install please see the below examples. 
+
+To install from source:
+
+```puppet
 class {'golang':
-  base_dir  => '/usr/local/go',
-  version   =>  'go1.4.1',
-  goroot    =>  "$GOPATH/bin:/usr/local/go/bin:$PATH",
-  workdir   => '/usr/local/',
+  base_dir    => '/usr/local/go',
+  from_source => true,
+  version     => 'go1.4.1',
+  goroot      => "$GOPATH/bin:/usr/local/go/bin:$PATH",
+  workdir     => '/usr/local/',
   }
 ```
+
+To install from the OS repos (yum ot apt)
+
+```puppet
+class {'golang':
+  base_dir        => '/usr/local/go',
+  from_source     => false,
+  package_version => 'present',
+  goroot          => "$GOPATH/bin:/usr/local/go/bin:$PATH",
+  workdir         => '/usr/local/',
+  }
+```
+
 Or all data can be set in Hiera ie ```golang::base_dir: /usr/local/go ```
 
 ##Dependencies
