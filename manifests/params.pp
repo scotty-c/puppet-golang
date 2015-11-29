@@ -2,7 +2,7 @@
 class golang::params {
   
   $manage_dependencies = true
-  $from_source         = false
+  $from_source         = true
   $base_dir            = '/usr/local/go'
   $version             = 'go1.4.2'
   $package_version     = 'present'
