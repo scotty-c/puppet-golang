@@ -3,8 +3,10 @@
 class golang (
 
   $manage_dependencies = $golang::params::manage_dependencies,
+  $from_source         = $golang::params::from_source,
   $base_dir            = $golang::params::base_dir,
   $version             = $golang::params::version,
+  $package_version     = $golang::params::package_version,
   $goroot              = $golang::params::goroot,
   $workdir             = $golang::params::workdir,
     
