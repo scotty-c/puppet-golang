@@ -39,10 +39,10 @@ class golang::install {
     mode    => 'a+x',
     require => Exec['make GO']
     }
-   }
- else {
-     package { 'golang':
-       ensure => $golang::package_version,
-     }
-   }
- }    
+  }
+  else {
+    package { 'golang':
+    ensure => $golang::package_version,
+    }
+  }
+}
