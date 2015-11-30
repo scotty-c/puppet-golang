@@ -14,9 +14,9 @@ class golang::params {
     }
 
   else {
-  	$base_dir        = '/usr/local/go'
-    $package_version = 'present'
-    $goroot          = '$GOPATH/bin:$PATH'
-    $workdir         = '/usr/local/go'
-   }
+  $base_dir        = '/usr/local/go'
+  $package_version = 'present'
+  $goroot          = '$GOPATH/bin:$PATH'
+  $workdir         = '/usr/local/go'
+  }
 }
