@@ -8,7 +8,7 @@ class golang::params {
 
   if ($from_source) {
     $base_dir        = '/usr/local/go'
-    $version         = 'go1.4.2'
+    $source_version  = 'go1.4.2'
     $goroot          = '$GOPATH/bin:/usr/local/go/bin:$PATH'
     $workdir         = '/usr/local/'
     }

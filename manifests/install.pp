@@ -15,7 +15,7 @@ class golang::install {
   
     exec { 'checkout go':
     path    => '/usr/bin:/usr/sbin:/bin:/usr/local/bin',
-    command => "git checkout ${golang::version}",
+    command => "git checkout ${golang::source_version}",
     cwd     => '/usr/local/go/',
     before  => Exec['make GO'],
     creates => '/etc/profile.d/golang.sh'
