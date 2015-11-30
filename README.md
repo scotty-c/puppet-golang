@@ -23,7 +23,7 @@ For basic usage:
 ```
 include golang
 ```
-To customise the install please see the below examples. 
+To customise the install please see the below examples. The deafult param is now to install from package !!!! 
 
 To install from source:
 

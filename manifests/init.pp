@@ -9,7 +9,7 @@ class golang (
   $package_version     = $golang::params::package_version,
   $goroot              = $golang::params::goroot,
   $workdir             = $golang::params::workdir,
-    
+
 ) inherits golang::params {
 
 validate_re($::osfamily,
