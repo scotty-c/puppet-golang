@@ -32,7 +32,7 @@ class {'golang':
   base_dir    => '/usr/local/go',
   from_source => true,
   version     => 'go1.4.1',
-  goroot      => "$GOPATH/bin:/usr/local/go/bin:$PATH",
+  goroot      => '$GOPATH/bin:/usr/local/go/bin:$PATH',
   workdir     => '/usr/local/',
   }
 ```
@@ -44,7 +44,7 @@ class {'golang':
   base_dir        => '/usr/local/go',
   from_source     => false,
   package_version => 'present',
-  goroot          => "$GOPATH/bin:/usr/local/go/bin:$PATH",
+  goroot          => '$GOPATH/bin:/usr/local/go/bin:$PATH',
   workdir         => '/usr/local/',
   }
 ```
