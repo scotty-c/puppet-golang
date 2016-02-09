@@ -2,7 +2,7 @@
 class golang::params {
 
   $from_repo     = true
-  $from_package  = false 
+  $from_package  = false
   
   validate_bool($from_repo)
 

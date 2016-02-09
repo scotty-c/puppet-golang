@@ -28,7 +28,7 @@ class golang::install(
     creates => '/etc/profile.d/golang.sh',
     before  => File['/etc/profile.d/golang.sh']
     }
-  } 
+  }
   
   else {
     package { 'golang':
