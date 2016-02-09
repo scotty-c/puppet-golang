@@ -1,14 +1,15 @@
 # This is the params class
 class golang::params {
 
-  $manage_dependencies = true
-  $from_source         = false
+  $from_repo     = true
+  $from_package  = false 
+  
+  validate_bool($from_repo)
 
-  validate_bool($from_source)
 
-  if ($from_source) {
+  if $from_repo {
     $base_dir        = '/usr/local/go'
-    $source_version  = 'go1.4.2'
+    $repo_version    = 'go1.5.3'
     $goroot          = '$GOPATH/bin:/usr/local/go/bin:$PATH'
     $workdir         = '/usr/local/'
     }

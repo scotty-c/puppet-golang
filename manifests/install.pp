@@ -1,44 +1,41 @@
 # This manifest builds Golang
-class golang::install {
-
-  validate_bool($golang::from_source)
-
-  if $golang::from_source {
+class golang::install(
   
-    vcsrepo { $golang::base_dir:
-    ensure   => present,
-    provider => git,
-    source   => 'https://github.com/golang/go.git',
-    revision => 'master',
-    before   => [Exec['make GO'], Exec['checkout go']]
-    }
+  $from_repo       = $golang::from_repo,
+  $repo_version    = $golang::repo_version,
+  $package_version = $golang::package_version,
+  $base_dir        = $golang::base_dir,
+  $workdir         = $golang::workdir,
+  $goroot          = $golang::goroot,
+
+  ){
+
+  validate_bool($from_repo)
   
-    exec { 'checkout go':
+  if $from_repo {
+    
+    wget::fetch { 'get golang package':
+    source      => "https://storage.googleapis.com/golang/${repo_version}.linux-amd64.tar.gz",
+    destination => "/tmp/${repo_version}.linux-amd64.tar.gz",
+    timeout     => 0,
+    verbose     => false,
+    } ->
+  
+    exec { 'untar go':
+    command => "tar -C /usr/local -xzf ${repo_version}.linux-amd64.tar.gz",
+    cwd     => '/tmp',
     path    => '/usr/bin:/usr/sbin:/bin:/usr/local/bin',
-    command => "git checkout ${golang::source_version}",
-    cwd     => '/usr/local/go/',
-    before  => Exec['make GO'],
-    creates => '/etc/profile.d/golang.sh'
-    }
-
-
-    exec { 'make GO':
-    path    => '/usr/bin:/usr/sbin:/bin:/usr/local/bin',
-    cwd     => '/usr/local/go/src/',
-    command => 'sh -c ./all.bash',
     creates => '/etc/profile.d/golang.sh',
-    tries   => 3,
-    timeout => 600,
     before  => File['/etc/profile.d/golang.sh']
     }
-  }
+  } 
   
   else {
     package { 'golang':
-    ensure => $golang::package_version,
+    ensure => $package_version,
     }
     
-    file { [$golang::base_dir, "${$golang::base_dir}/src"]:
+    file { [$base_dir, "${$base_dir}/src"]:
     ensure => directory,
     }
   }

@@ -1,10 +1,10 @@
-<% if @from_source == true then -%>
+<% if @from_repo == true then -%>
 GOROOT="<%= @workdir %>go"
 <% end -%>
 GOPATH="<%= @workdir %>"
 PATH="<%= @goroot %>"
-<% if @from_source == true then -%>
+<% if @from_repo == true then -%>
 export GOPATH PATH GOROOT
-<% elsif @from_source == false then -%>
+<% elsif @from_repo == false then -%>
 export GOPATH PATH
 <% end -%>

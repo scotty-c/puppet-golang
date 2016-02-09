@@ -30,8 +30,8 @@ To install from source:
 ```puppet
 class {'golang':
   base_dir    => '/usr/local/go',
-  from_source => true,
-  version     => 'go1.4.1',
+  from_repo   => true,
+  rep_version => 'go1.5.3',
   goroot      => '$GOPATH/bin:/usr/local/go/bin:$PATH',
   workdir     => '/usr/local/',
   }
@@ -42,7 +42,7 @@ To install from the OS repos (yum ot apt)
 ```puppet
 class {'golang':
   base_dir        => '/usr/local/go',
-  from_source     => false,
+  from_repo       => false,
   package_version => 'present',
   goroot          => '$GOPATH/bin:/usr/local/go/bin:$PATH',
   workdir         => '/usr/local/',
