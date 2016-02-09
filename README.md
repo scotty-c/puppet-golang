@@ -25,7 +25,7 @@ include golang
 ```
 To customise the install please see the below examples. The deafult param is now to install from package !!!! 
 
-To install from source:
+To install from golang repo as tar.gz:
 
 ```puppet
 class {'golang':
