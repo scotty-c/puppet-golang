@@ -41,7 +41,7 @@ class {'golang':
   }
 ```
 
-To install from the OS repos (yum ot apt)
+To install from the OS repos (yum or apt)
 
 ```puppet
 class {'golang':
@@ -57,7 +57,7 @@ Or all data can be set in Hiera ie ```golang::base_dir: /usr/local/go ```
 
 ##Dependencies
 
-This module needs puppetlabs/vcsrepo
+This module needs maestrodev/wget
 
 ## Development
 
