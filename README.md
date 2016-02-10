@@ -17,6 +17,10 @@ This is a module that will install Google's Go language for all users.
 ## Module Description
 
 This module installs GO from OS repo (ie. yum or apt) or staright from Google's repo, making it compatbale with any OS that listed on Google's site https://golang.org/doc/install
+## Please note !!!!!
+I have depricated installing GO from source as it was making Puppet runs way to long. If you want to keep using this feature please use a version of this module that is 1.* 
+As of 2.* they feature will no long be available.
+
 
 ## Usage
 For basic usage:
