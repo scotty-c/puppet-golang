@@ -16,7 +16,7 @@ This is a module that will install Google's Go language for all users.
 
 ## Module Description
 
-This module installs GO from source, making it compatbale with any OS that listed on Google's site https://golang.org/doc/install
+This module installs GO from OS repo (ie. yum or apt) or staright from Google's repo, making it compatbale with any OS that listed on Google's site https://golang.org/doc/install
 
 ## Usage
 For basic usage:
