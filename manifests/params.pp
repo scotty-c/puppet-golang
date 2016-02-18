@@ -12,7 +12,7 @@ class golang::params {
     $repo_version           = 'go1.6'
     $goroot                 = '$GOPATH/bin:/usr/local/go/bin:$PATH'
     $workdir                = '/usr/local/'
-    $wgetnocheckcertificate = false,
+    $wgetnocheckcertificate = false
     }
 
   else {
