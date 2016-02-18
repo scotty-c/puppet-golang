@@ -1,12 +1,13 @@
 # This manifest builds Golang
 class golang::install(
   
-  $from_repo       = $golang::from_repo,
-  $repo_version    = $golang::repo_version,
-  $package_version = $golang::package_version,
-  $base_dir        = $golang::base_dir,
-  $workdir         = $golang::workdir,
-  $goroot          = $golang::goroot,
+  $from_repo              = $golang::from_repo,
+  $repo_version           = $golang::repo_version,
+  $package_version        = $golang::package_version,
+  $base_dir               = $golang::base_dir,
+  $workdir                = $golang::workdir,
+  $goroot                 = $golang::goroot,
+  $wgetnocheckcertificate = $golang::wgetnocheckcertificate,
 
   ){
 
@@ -15,10 +16,11 @@ class golang::install(
   if $from_repo {
     
     wget::fetch { 'get golang package':
-    source      => "https://storage.googleapis.com/golang/${repo_version}.linux-amd64.tar.gz",
-    destination => "/tmp/${repo_version}.linux-amd64.tar.gz",
-    timeout     => 0,
-    verbose     => false,
+    source              => "https://storage.googleapis.com/golang/${repo_version}.linux-amd64.tar.gz",
+    destination         => "/tmp/${repo_version}.linux-amd64.tar.gz",
+    timeout             => 0,
+    verbose             => false,
+    nocheckcertificate  => $wgetnocheckcertificate,
     } ->
   
     exec { 'untar go':
