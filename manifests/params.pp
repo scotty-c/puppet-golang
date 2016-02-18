@@ -8,10 +8,11 @@ class golang::params {
 
 
   if $from_repo {
-    $base_dir        = '/usr/local/go'
-    $repo_version    = 'go1.5.3'
-    $goroot          = '$GOPATH/bin:/usr/local/go/bin:$PATH'
-    $workdir         = '/usr/local/'
+    $base_dir               = '/usr/local/go'
+    $repo_version           = 'go1.6'
+    $goroot                 = '$GOPATH/bin:/usr/local/go/bin:$PATH'
+    $workdir                = '/usr/local/'
+    $wgetnocheckcertificate = false
     }
 
   else {

@@ -18,8 +18,8 @@ This is a module that will install Google's Go language for all users.
 
 This module installs GO from OS repo (ie. yum or apt) or staright from Google's repo, making it compatbale with any OS that listed on Google's site https://golang.org/doc/install
 ## Please note !!!!!
-I have depricated installing GO from source as it was making Puppet runs way to long. If you want to keep using this feature please use a version of this module that is 1.* 
-As of 2.* they feature will no long be available.
+I have deprecated installing GO from source as it was making Puppet runs way too long. If you want to keep using this feature please use a version of this module that is 1.*. 
+As of 2.* this feature will no longer be available.
 
 
 ## Usage
@@ -27,7 +27,7 @@ For basic usage:
 ```
 include golang
 ```
-To customise the install please see the below examples. The deafult param is now to install from package !!!! 
+To customize the installation please see the examples below. The deafult param is now to install from package!
 
 To install from golang repo as tar.gz:
 
@@ -35,10 +35,23 @@ To install from golang repo as tar.gz:
 class {'golang':
   base_dir    => '/usr/local/go',
   from_repo   => true,
-  rep_version => 'go1.5.3',
+  rep_version => 'go1.6',
   goroot      => '$GOPATH/bin:/usr/local/go/bin:$PATH',
   workdir     => '/usr/local/',
-  }
+}
+```
+
+If you have issues with older versions of wget and Google's certificate you can disable the certificate check like this:
+
+```puppet
+class {'golang':
+  base_dir               => '/usr/local/go',
+  from_repo              => true,
+  rep_version            => 'go1.6',
+  goroot                 => '$GOPATH/bin:/usr/local/go/bin:$PATH',
+  workdir                => '/usr/local/',
+  wgetnocheckcertificate => true,
+}
 ```
 
 To install from the OS repos (yum or apt)
@@ -57,7 +70,7 @@ Or all data can be set in Hiera ie ```golang::base_dir: /usr/local/go ```
 
 ##Dependencies
 
-This module needs maestrodev/wget
+This module needs [maestrodev/puppet-wget](https://github.com/maestrodev/puppet-wget)
 
 ## Development
 
