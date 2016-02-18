@@ -16,11 +16,11 @@ class golang::install(
   if $from_repo {
     
     wget::fetch { 'get golang package':
-    source              => "https://storage.googleapis.com/golang/${repo_version}.linux-amd64.tar.gz",
-    destination         => "/tmp/${repo_version}.linux-amd64.tar.gz",
-    timeout             => 0,
-    verbose             => false,
-    nocheckcertificate  => $wgetnocheckcertificate,
+    source             => "https://storage.googleapis.com/golang/${repo_version}.linux-amd64.tar.gz",
+    destination        => "/tmp/${repo_version}.linux-amd64.tar.gz",
+    timeout            => 0,
+    verbose            => false,
+    nocheckcertificate => $wgetnocheckcertificate,
     } ->
   
     exec { 'untar go':
