@@ -35,7 +35,7 @@ To install from golang repo as tar.gz:
 class {'golang':
   base_dir    => '/usr/local/go',
   from_repo   => true,
-  rep_version => 'go1.6',
+  repo_version => 'go1.6',
   goroot      => '$GOPATH/bin:/usr/local/go/bin:$PATH',
   workdir     => '/usr/local/',
 }
