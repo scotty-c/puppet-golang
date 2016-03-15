@@ -47,7 +47,7 @@ If you have issues with older versions of wget and Google's certificate you can 
 class {'golang':
   base_dir               => '/usr/local/go',
   from_repo              => true,
-  rep_version            => 'go1.6',
+  repo_version           => 'go1.6',
   goroot                 => '$GOPATH/bin:/usr/local/go/bin:$PATH',
   workdir                => '/usr/local/',
   wgetnocheckcertificate => true,
