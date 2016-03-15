@@ -1,8 +1,6 @@
 # golang 
 
-[![Build Status](https://travis-ci.org/scotty-c/puppet-golang.svg?branch=master)](https://travis-ci.org/scotty-c/puppet-golang) [![PuppetForge](http://img.shields.io/puppetforge/v/scottyc/golang.svg)](https://forge.puppetlabs.com/scottyc/golang) 
-
-[![Puppet Forge Downloads](http://img.shields.io/puppetforge/dt/scottyc/golang.svg)](https://forge.puppetlabs.com/scottyc/golang)
+[![Build Status](https://travis-ci.org/scotty-c/puppet-golang.svg?branch=master)](https://travis-ci.org/scotty-c/puppet-golang) [![PuppetForge](http://img.shields.io/puppetforge/v/scottyc/golang.svg)](https://forge.puppetlabs.com/scottyc/golang) [![Puppet Forge Downloads](http://img.shields.io/puppetforge/dt/scottyc/golang.svg)](https://forge.puppetlabs.com/scottyc/golang)
 
 #### Table of Contents
 
